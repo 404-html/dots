@@ -12,15 +12,12 @@ plugins=(
 
 DISABLE_AUTO_UPDATE="true"
 
-source $ZSH/oh-my-zsh.sh
+[[ -f $ZSH/oh-my-zsh.sh ]] && source $ZSH/oh-my-zsh.sh || echo "Oh my ZSH not found!"
 
 set -o vi
 alias vi="vim"
 alias view="vim -M"
 
-source /usr/bin/virtualenvwrapper.sh
+[[ -f /usr/bin/virtualenvwrapper.sh ]] && source /usr/bin/virtualenvwrapper.sh
 
 [[ -f ~/.startx.sh ]] && source ~/.startx.sh || tmux_entrypoint
-
-export DOCKER_UID=$UID
-export DOCKER_GID=$GID
