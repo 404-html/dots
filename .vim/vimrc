@@ -1,0 +1,93 @@
+set nocp
+
+set encoding=utf8
+
+set number
+set tabstop=4
+set shiftwidth=4
+set autoindent
+set smartindent
+set expandtab
+
+set hidden
+
+filetype plugin indent on
+syntax on
+set omnifunc=syntaxcomplete#Complete
+
+" Allow deletion in insert mode
+set backspace=indent,eol,start
+
+cmap w!! w !sudo tee % > /dev/null
+
+let mapleader = ' '
+
+" Display 80 symbols column
+"set colorcolumn=80
+
+" Use system clipboard by default
+set clipboard=unnamedplus
+
+" Move screen with cursor
+"no j <C-e>M0
+"no k <C-y>M0
+no J <C-e>j
+no K <C-y>k
+
+" Easy motion
+map <leader> <Plug>(easymotion-s)
+
+" Easier command mode
+" no ; :
+
+" Move cursor to center when opening buffer
+"augroup CenterMouse
+"    au!
+"    au BufRead * :norm M
+"augroup END
+
+call plug#begin('~/.vim/plug')
+
+Plug 'easymotion/vim-easymotion'
+Plug 'tpope/vim-sleuth'
+Plug 'mattn/emmet-vim', { 'for': ['html', 'djangohtml', 'css'] }
+Plug 'hail2u/vim-css3-syntax'
+
+call plug#end()
+
+
+" Easymotion Configuration
+let g:EasyMotion_do_mapping = 0
+let g:EasyMotion_smartcase = 1
+let g:EasyMotion_use_upper = 1
+let g:EasyMotion_enter_jump_first = 1
+let g:EasyMotion_prompt = 'Search for {n} character(s): '
+let g:EasyMotion_grouping = 2
+"map <leader>f <Plug>(easymotion-f)
+"map <leader>F <Plug>(easymotion-F)
+"map <leader>t <Plug>(easymotion-t)
+"map <leader>T <Plug>(easymotion-T)
+"map <leader>w <Plug>(easymotion-w)
+"map <leader>W <Plug>(easymotion-W)
+"map <leader>b <Plug>(easymotion-b)
+"map <leader>B <Plug>(easymotion-B)
+"map <leader>e <Plug>(easymotion-e)
+"map <leader>E <Plug>(easymotion-E)
+"map <leader>ge <Plug>(easymotion-ge)
+"map <leader>gE <Plug>(easymotion-gE)
+"map <leader>s <Plug>(easymotion-s)
+"map <leader>S <Plug>(easymotion-S)
+
+"
+"let g:NERDTreeNaturalSort = 1
+"no <silent> <leader>t :NERDTreeToggle<CR>
+"
+
+" Use emmet only in insert mode
+let g:user_emmet_mode = 'i'
+autocmd FileType html,css,djangohtml :imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+" Use natural way to expand emmet expressions
+
+au FileType html,css,djangohtml,js
+            \ set tabstop=2 |
+            \ set shiftwidth=2
