@@ -1,93 +1,131 @@
-set nocp
+"""" MUST HAVE
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+set nocp
 set encoding=utf8
 
+no <c-h> <c-w>h
+no <c-j> <c-w>j
+no <c-k> <c-w>k
+no <c-l> <c-w>l
+
 set number
+
 set tabstop=4
 set shiftwidth=4
 set autoindent
 set smartindent
 set expandtab
 
+set incsearch
+set ignorecase
+set smartcase
+
 set hidden
 
 filetype plugin indent on
 syntax on
-set omnifunc=syntaxcomplete#Complete
-
-" Allow deletion in insert mode
-set backspace=indent,eol,start
 
 cmap w!! w !sudo tee % > /dev/null
 
-let mapleader = ' '
+" Normal backspace behaviour
+set bs=2
 
-" Display 80 symbols column
-"set colorcolumn=80
-
-" Use system clipboard by default
 set clipboard=unnamedplus
 
-" Move screen with cursor
-"no j <C-e>M0
-"no k <C-y>M0
 no J <C-e>j
 no K <C-y>k
 
-" Easy motion
-map <leader> <Plug>(easymotion-s)
 
-" Easier command mode
-" no ; :
 
-" Move cursor to center when opening buffer
-"augroup CenterMouse
-"    au!
-"    au BufRead * :norm M
-"augroup END
+
+"""" MISCELLANEOUS
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Source vimrc on save
+au! BufWritePost vimrc source %
+
+" Remain in visual mode after indenting
+vno < <gv
+vno > >gv
+
+" Enable mouse in all modes
+set mouse=a
+
+" Expand history
+set history=1000
+set undolevels=1000
+
+" Enable default completion
+set omnifunc=syntaxcomplete#Complete
+
+" Indent for web
+au! FileType html,css,djangohtml,js
+            \ set tabstop=2 |
+            \ set shiftwidth=2
+
+
+
+
+"""" PLUGINS
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" For plugin related commands
+let mapleader = ' '
+
+" vim-plug
 
 call plug#begin('~/.vim/plug')
 
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-sleuth'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'mattn/emmet-vim', { 'for': ['html', 'djangohtml', 'css'] }
-Plug 'hail2u/vim-css3-syntax'
+Plug 'hail2u/vim-css3-syntax', { 'for': 'css' }
+Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
 
 call plug#end()
 
 
-" Easymotion Configuration
+" vim-easymotion
+
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
 let g:EasyMotion_use_upper = 1
 let g:EasyMotion_enter_jump_first = 1
 let g:EasyMotion_prompt = 'Search for {n} character(s): '
 let g:EasyMotion_grouping = 2
-"map <leader>f <Plug>(easymotion-f)
-"map <leader>F <Plug>(easymotion-F)
-"map <leader>t <Plug>(easymotion-t)
-"map <leader>T <Plug>(easymotion-T)
-"map <leader>w <Plug>(easymotion-w)
-"map <leader>W <Plug>(easymotion-W)
-"map <leader>b <Plug>(easymotion-b)
-"map <leader>B <Plug>(easymotion-B)
-"map <leader>e <Plug>(easymotion-e)
-"map <leader>E <Plug>(easymotion-E)
-"map <leader>ge <Plug>(easymotion-ge)
-"map <leader>gE <Plug>(easymotion-gE)
-"map <leader>s <Plug>(easymotion-s)
-"map <leader>S <Plug>(easymotion-S)
+map <leader>f <Plug>(easymotion-s)
 
-"
-"let g:NERDTreeNaturalSort = 1
-"no <silent> <leader>t :NERDTreeToggle<CR>
-"
 
-" Use emmet only in insert mode
+" NERDTree
+
+let g:NERDTreeNaturalSort = 1
+no <silent> <leader>t :NERDTreeToggle<CR>
+
+
+" emmet-vim
+
 let g:user_emmet_mode = 'i'
-autocmd FileType html,css,djangohtml :imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
-" Use natural way to expand emmet expressions
 
-au FileType html,css,djangohtml,js
-            \ set tabstop=2 |
-            \ set shiftwidth=2
+" Use natural way to expand emmet expressions<C-c>rr<C-c>rr
+autocmd FileType html,css,djangohtml
+            \ :imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+
+
+" vim-airline
+
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'angr'
+
+
+" python-mode
+
+let g:pymode = 1
+let g:pymode_options = 1
+let g:pymode_doc_bind = '<leader>d'
+let g:pymode_breakpoint_bind = '<leader>b'
+let g:pymode_rope_completion_bind = '<tab>'
+let g:pymode_rope_goto_definition_bind = '<leader>g'
+let g:pymode_rope_rename_bind = '<leader>r'
