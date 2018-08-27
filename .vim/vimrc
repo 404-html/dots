@@ -81,7 +81,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-sleuth'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'mattn/emmet-vim', { 'for': ['html', 'djangohtml', 'css'] }
 Plug 'hail2u/vim-css3-syntax', { 'for': 'css' }
 Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
@@ -110,9 +110,9 @@ no <silent> <leader>t :NERDTreeToggle<CR>
 
 let g:user_emmet_mode = 'i'
 
-" Use natural way to expand emmet expressions<C-c>rr<C-c>rr
+" Use natural way to expand emmet expressions
 autocmd FileType html,css,djangohtml
-            \ :imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+            \ imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 
 " vim-airline
@@ -124,9 +124,32 @@ let g:airline_theme = 'angr'
 " python-mode
 
 let g:pymode = 1
+
+let g:pymode_python = 'python3'
+
+" Features
+let g:pymode_warnings = 1
+let g:pymode_trim_whitespaces = 1
 let g:pymode_options = 1
-let g:pymode_doc_bind = '<leader>d'
+let g:pymode_indent = 1
+let g:pymode_folding = 1
+let g:pymode_motion = 1
+let g:pymode_doc = 0
+let g:pymode_virtualenv = 1
+let g:pymode_run = 1
+let g:pymode_breakpoint = 0 " breaks pymode
+let g:pymode_lint = 0       " breaks pymode
+let g:pymode_rope = 1
+let g:pymode_rope_completion = 1
+let g:pymode_syntax = 1
+
+" Options
+let g:pymode_rope_lookup_project = 0
+
+" Keymap
 let g:pymode_breakpoint_bind = '<leader>b'
+let g:pymode_rope_show_doc_bind = '<leader>d'
 let g:pymode_rope_completion_bind = '<tab>'
+ino <s-tab> <c-p>
 let g:pymode_rope_goto_definition_bind = '<leader>g'
 let g:pymode_rope_rename_bind = '<leader>r'
