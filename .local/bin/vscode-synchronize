@@ -1,0 +1,23 @@
+#!/bin/bash
+
+code_executable=code
+code_conf_dir_name=.config/Code/User
+
+trap 2
+
+echo -n "Copying settings and keybindings of $1 to $2..."
+sudo cp -p /home/$1/$code_conf_dir_name/settings.json /home/$2/$code_conf_dir_name/settings.json
+sudo cp -p /home/$1/$code_conf_dir_name/keybindings.json /home/$2/$code_conf_dir_name/keybindings.json
+sudo chown $2 /home/$2/$code_conf_dir_name/settings.json
+sudo chown $2 /home/$2/$code_conf_dir_name/keybindings.json
+sudo sed -i s/$1/$2/g /home/$2/$code_conf_dir_name/settings.json
+echo "done"
+
+echo -n "Copying extensions of $1 to $2..."
+for extension_name in $(su $1 -c "$code_executable --list-extensions"); do
+	echo -n "Installing $extension_name to $2..."
+	su $2 -c "$code_executable --install-extension $extension_name"
+	echo "done"
+done
+echo "done"
+

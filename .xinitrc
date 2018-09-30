@@ -10,12 +10,12 @@ setxkbmap -option "grp:alt_shift_toggle"
 
 # merge in defaults and keymaps
 
-if [ -f $sysresources ]; then
-    xrdb -merge $sysresources
+if [ -f "$sysresources" ]; then
+    xrdb -merge "$sysresources"
 fi
 
-if [ -f $sysmodmap ]; then
-    xmodmap $sysmodmap
+if [ -f "$sysmodmap" ]; then
+    xmodmap "$sysmodmap"
 fi
 
 if [ -f "$userresources" ]; then

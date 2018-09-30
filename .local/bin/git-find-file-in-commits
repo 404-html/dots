@@ -1,0 +1,25 @@
+#!/bin/bash
+
+file=$1
+file_hash=$(git hash-object $file)
+
+echo "$file hash is $file_hash"
+
+found=()
+for commit in $(git log --pretty=%H --follow $file); do
+	hash=$(git rev-parse $commit:$file)
+	if [ $hash = $file_hash ]; then
+		found+=($commit)
+	fi
+done
+
+if [ ${#found[@]} -eq 0 ]; then
+	echo "Nothing found"
+else
+	echo "    found at:"
+	for commit in $found; do
+		echo "        $commit"
+	done
+fi
+
+

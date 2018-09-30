@@ -26,10 +26,11 @@ man() {
     command man "$@"
   }
 
-export EDITOR=vim
+export TERM=xterm-256color
+export EDITOR=vi
 export VISUAL=vim
 
-export ZSH=~/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="robbyrussell"
 
@@ -38,7 +39,8 @@ sudo
 git
 docker
 docker-comose
-docker-container
+npm
+ng
 )
 
 DISABLE_AUTO_UPDATE="true"
@@ -47,8 +49,18 @@ DISABLE_AUTO_UPDATE="true"
 [[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 set -o vi
-alias vi="vim"
-alias view="vim -M"
+alias info="info --vi-keys"
+alias dots='git --git-dir=$HOME/.dots.git/ --work-tree=$HOME'
+
+export DIGITALOCEAN_ACCESS_TOKEN=$(< $HOME/.digitalocean_token) 2>/dev/null
+export DIGITALOCEAN_IMAGE=coreos-stable
+export DIGITALOCEAN_REGION=fra1
+export DIGITALOCEAN_SSH_KEY_FINGERPRINT=$(ssh-keygen -l -E md5 -f .ssh/id_ecdsa.pylon_manager \
+					  | awk '{ gsub("MD5:", "", $2); print $2 }') 2>/dev/null
+export DIGITALOCEAN_SSH_KEY_PATH=$HOME/.ssh/id_ecdsa.pylon_manager
+export DIGITALOCEAN_SSH_PORT=22
+export DIGITALOCEAN_SSH_USER=core
+export MACHINE_DRIVER=digitalocean
 
 [[ -f /usr/bin/virtualenvwrapper.sh ]] && source /usr/bin/virtualenvwrapper.sh
 
