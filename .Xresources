@@ -1,4 +1,4 @@
-URxvt.font:							            xft:Hack:size=11
+URxvt.font:							            xft:Hack Nerd Font :size=11
 URxvt.scrollBar:					            false
 URxvt.perl-ext-common:				            default,clipboard,url-select,keyboard-select
 URxvt.url-select.launcher:			            google-chrome

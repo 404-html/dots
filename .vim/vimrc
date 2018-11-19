@@ -53,6 +53,11 @@ no K <C-y>k
 "endif
 set t_Co=256
 
+" Different cursor for different modes
+"let &t_SI = "\<esc>[6 q"
+"let &t_SR = "\<esc>[5 q"
+"let &t_EI = "\<esc>[2 q"
+
 
 
 
@@ -60,7 +65,7 @@ set t_Co=256
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Source vimrc on save
-au! BufWritePost vimrc source %
+"au! BufWritePost vimrc source %
 
 " Remain in visual mode after indenting
 vno < <gv
@@ -77,17 +82,19 @@ set undolevels=1000
 set omnifunc=syntaxcomplete#Complete
 
 " Indent for web
-au! FileType html,css,scss,sass,less,djangohtml,js
-            \ set tabstop=2 |
-            \ set shiftwidth=2
+"au FileType html,css,scss,sass,less,djangohtml,js
+            "\ set tabstop=2 |
+            "\ set shiftwidth=2
 
 " Indent for yaml
-au! FileType yaml,yml
+au FileType yaml,yml
             \ set tabstop=2 |
             \ set shiftwidth=2
 
-" Don't show preview window on completion
-set completeopt-=preview
+" Show menu for any number of completions
+" Don't select any by default
+" Don't insert when selecting completion untill selection confirmed
+set completeopt=menu,menuone,noselect,noinsert
 
 " Enter insert mode for commit messages
 au! FileType gitcommit startinsert
@@ -106,15 +113,19 @@ let mapleader = ' '
 call plug#begin('~/.vim/plug')
 
 " General
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'easymotion/vim-easymotion'
+Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'scrooloose/nerdtree'
 Plug 'dracula/vim', { 'as': 'dracula' }
 
 " Python
-Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
+"Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
 
 " Web
 Plug 'mattn/emmet-vim', { 'for': ['html', 'djangohtml'] }
@@ -125,6 +136,10 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer',
 Plug 'HerringtonDarkholme/yats.vim', { 'for': 'typescript' }
 
 call plug#end()
+
+
+" ctrlp
+let g:ctrlp_custom_ignore = 'node_modules'
 
 
 " vim-easymotion
@@ -148,10 +163,9 @@ no <silent> <leader>t :NERDTreeToggle<CR>
 
 let g:user_emmet_mode = 'i'
 let g:user_emmet_install_global = 0
-
-autocmd FileType html,djangohtml EmmetInstall |
 " Use natural way to expand emmet expressions
-            \ imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+autocmd FileType html EmmetInstall |
+            \ imap <buffer> <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 
 " vim-airline
@@ -197,7 +211,7 @@ let g:pymode_rope_lookup_project = 0
 let g:pymode_breakpoint_bind = '<leader>b'
 let g:pymode_rope_show_doc_bind = '<leader>d'
 let g:pymode_rope_completion_bind = '<tab>'
-ino <s-tab> <c-p>
+au FileType python ino <s-tab> <c-p>
 let g:pymode_rope_goto_definition_bind = '<leader>g'
 let g:pymode_rope_rename_bind = '<leader>r'
 
@@ -205,6 +219,9 @@ let g:pymode_rope_rename_bind = '<leader>r'
 " YouCompleteMe
 
 " As-you-type completion
+let g:ycm_filetype_blacklist = {'*': 1, 'python': 1}
+let g:ycm_filetype_whitelist = { 'javascript': 1,
+                               \ 'typescript': 1}
 if !exists("g:ycm_semantic_triggers")
   let g:ycm_semantic_triggers = {}
 endif
