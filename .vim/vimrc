@@ -144,7 +144,7 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'mattn/emmet-vim', { 'for': ['html', 'djangohtml'] }
 Plug 'hail2u/vim-css3-syntax', { 'for': 'css' }
 Plug 'othree/html5.vim'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer', 
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --ts-completer', 
                                \ 'for': ['javascript', 'typescript'] }
 Plug 'HerringtonDarkholme/yats.vim', { 'for': 'typescript' }
 
