@@ -48,6 +48,8 @@ DISABLE_AUTO_UPDATE="true"
 set -o vi
 alias info="info --vi-keys"
 alias dots='git --git-dir=$HOME/.dots.git/ --work-tree=$HOME'
+alias dc='docker'
+alias dcc='docker-compose'
 
 [[ -f /usr/bin/virtualenvwrapper.sh ]] && source /usr/bin/virtualenvwrapper.sh
 
