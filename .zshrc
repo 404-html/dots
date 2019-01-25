@@ -50,6 +50,7 @@ alias info="info --vi-keys"
 alias dots='git --git-dir=$HOME/.dots.git/ --work-tree=$HOME'
 alias dc='docker'
 alias dcc='docker-compose'
+alias dm='docker-machine'
 
 [[ -f /usr/bin/virtualenvwrapper.sh ]] && source /usr/bin/virtualenvwrapper.sh
 

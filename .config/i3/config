@@ -153,7 +153,7 @@ bindsym $mod+r mode "resize"
 
 default_border none
 
-gaps inner 4
+gaps inner 0
 gaps outer 0
 
 # only show gaps when several containers on workspace
@@ -162,11 +162,13 @@ gaps outer 0
 # Clipboard
 #bindsym ctrl+shift+v exec --no-startup-id /bin/sh -c '[[ "" != "$(xsel -p)" ]] && xdotool type $(xsel -p) || xdotool type $(xsel -b)'
 
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
+set $i3_config $HOME/.config/i3
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id $i3_config/pactl.sh set-sink-volume +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id $i3_config/pactl.sh set-sink-volume -5%
+bindsym XF86AudioMute exec --no-startup-id $i3_config/pactl.sh set-sink-mute toggle
+bindsym XF86MonBrightnessUp exec --no-startup-id $i3_config/backlight.sh -inc 10
+bindsym XF86MonBrightnessDown exec --no-startup-id $i3_config/xbacklight.sh -dec 10
 
 #bar {
 #	colors {

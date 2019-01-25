@@ -17,4 +17,6 @@ export DIGITALOCEAN_SSH_KEY_FINGERPRINT=$(ssh-keygen -l -E md5 -f .ssh/id_ecdsa.
 export DIGITALOCEAN_SSH_KEY_PATH=$HOME/.ssh/id_ecdsa.pylon_manager
 export DIGITALOCEAN_SSH_PORT=22
 export DIGITALOCEAN_SSH_USER=core
-export MACHINE_DRIVER=digitalocean
+export SCALEWAY_REGION=ams1
+export SCALEWAY_TOKEN=$(< $HOME/.scaleway_token) 2>/dev/null
+export SCALEWAY_ORGANIZATION=$(< $HOME/.scaleway_organization) 2>/dev/null
