@@ -9,6 +9,8 @@ export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
 
+export DOCKER_USER=$(id -u):$(id -g)
+
 export DIGITALOCEAN_ACCESS_TOKEN=$(< $HOME/.digitalocean_token) 2>/dev/null
 export DIGITALOCEAN_IMAGE=coreos-stable
 export DIGITALOCEAN_REGION=fra1

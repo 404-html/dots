@@ -31,14 +31,14 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 
 plugins=(
-sudo
-git
-docker
-docker-comose
-npm
-ng
-tmux
-zsh-syntax-highlighting
+  sudo
+  git
+  docker
+  docker-comose
+  npm
+  ng
+  tmux
+  zsh-syntax-highlighting
 )
 
 DISABLE_AUTO_UPDATE="true"
@@ -51,6 +51,10 @@ alias dots='git --git-dir=$HOME/.dots.git/ --work-tree=$HOME'
 alias dc='docker'
 alias dcc='docker-compose'
 alias dm='docker-machine'
+dmenv() {
+  eval $(docker-machine env $@)
+}
+alias dmenvu='eval $(docker-machine env -u)'
 
 [[ -f /usr/bin/virtualenvwrapper.sh ]] && source /usr/bin/virtualenvwrapper.sh
 
