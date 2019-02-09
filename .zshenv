@@ -22,3 +22,10 @@ export DIGITALOCEAN_SSH_USER=core
 export SCALEWAY_REGION=ams1
 export SCALEWAY_TOKEN=$(< $HOME/.scaleway_token) 2>/dev/null
 export SCALEWAY_ORGANIZATION=$(< $HOME/.scaleway_organization) 2>/dev/null
+
+export LESS_TERMCAP_md=$'\e[01;31m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[01;44;33m'
+export LESS_TERMCAP_ue=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[01;32m'
