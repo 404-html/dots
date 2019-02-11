@@ -152,7 +152,7 @@ call plug#end()
 
 
 " ctrlp
-let g:ctrlp_custom_ignore = 'node_modules'
+let g:ctrlp_custom_ignore = 'node_modules\|silky_profiler'
 
 
 " vim-easymotion
