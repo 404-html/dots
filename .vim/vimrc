@@ -238,11 +238,12 @@ let g:ycm_filetype_whitelist = { 'javascript': 1,
                                \ 'c': 1,
                                \ 'cpp': 1,
                                \ 'python': 1 }
-if !exists("g:ycm_semantic_triggers")
-  let g:ycm_semantic_triggers = {}
-endif
-let g:ycm_semantic_triggers['typescript'] = ['.']
-let g:ycm_semantic_triggers['javascript'] = ['.']
+let g:ycm_filepath_blacklist = { '*': 1 }
+let g:ycm_semantic_triggers = {
+      \ 'javascript,typescript': [
+        \ "re!import(\\s+?)(.*?)from(\\s*?)\[\"'](.*\[\"']?)"
+        \ ]
+      \ }
 
 " Don't show YCM's preview window
 let g:ycm_add_preview_to_completeopt = 0
