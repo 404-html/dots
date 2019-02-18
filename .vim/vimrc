@@ -241,7 +241,7 @@ let g:ycm_filetype_whitelist = { 'javascript': 1,
 let g:ycm_filepath_blacklist = { '*': 1 }
 let g:ycm_semantic_triggers = {
       \ 'javascript,typescript': [
-        \ "re!import(\\s+?)(.*?)from(\\s*?)\[\"'](.*\[\"']?)"
+        \ "re!(import|export)(\\s+?)(.*?)from(\\s*?)\[\"'](.*\[\"']?)"
         \ ]
       \ }
 no <Space>c :YcmCompleter FixIt<CR>
