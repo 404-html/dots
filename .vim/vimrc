@@ -13,8 +13,7 @@ set number
 
 set tabstop=4
 set shiftwidth=4
-set autoindent
-set smartindent
+set cindent
 set expandtab
 
 set incsearch
@@ -144,8 +143,10 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'mattn/emmet-vim', { 'for': ['html', 'djangohtml'] }
 Plug 'hail2u/vim-css3-syntax', { 'for': 'css' }
 Plug 'othree/html5.vim'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --ts-completer --clang-completer', 
-                               \ 'for': ['javascript', 'typescript', 'c', 'cpp', 'python'] }
+Plug 'Valloric/YouCompleteMe',
+            \ { 'do': './install.py --ts-completer --clang-completer', 
+            \ 'for': ['javascript', 'typescript', 'c', 'cpp', 'python']
+            \ }
 Plug 'HerringtonDarkholme/yats.vim', { 'for': 'typescript' }
 
 call plug#end()
