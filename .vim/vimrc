@@ -248,7 +248,7 @@ let g:ycm_semantic_triggers = {
 no <Space>c :YcmCompleter FixIt<CR>
 no <Space>g :YcmCompleter GoTo<CR>
 no <Space>G :YcmCompleter GoToType<CR>
-no <Space>r :YcmCompleter GoToReference<CR>
+no <Space>r :YcmCompleter GoToReferences<CR>
 no <Space>d :YcmCompleter GetDoc<CR>
 no <Space>T :YcmCompleter GetType<CR>
 no <Space>R :YcmCompleter RefactorRename 
