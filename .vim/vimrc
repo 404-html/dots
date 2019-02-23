@@ -111,6 +111,9 @@ set completeopt=menu,menuone,noselect,noinsert
 " Enter insert mode for commit messages
 au! FileType gitcommit startinsert
 
+" DVC filetype
+autocmd! BufNewFile,BufRead Dvcfile,*.dvc setfiletype yaml
+
 set colorcolumn=73
 
 
