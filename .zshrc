@@ -29,6 +29,7 @@ plugins=(
   ng
   tmux
   zsh-syntax-highlighting
+  dvc
 )
 
 DISABLE_AUTO_UPDATE="true"
