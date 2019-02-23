@@ -1,4 +1,4 @@
-export PATH=$PATH:$HOME/.node_modules/bin
+export PATH=$HOME/.node_modules/bin:$HOME/.local/bin:$PATH
 export npm_config_prefix=$HOME/.node_modules
 
 export TERM=xterm-256color
