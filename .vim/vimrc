@@ -236,6 +236,7 @@ let g:pymode_rope_rename_bind = '<leader>r'
 " YouCompleteMe
 
 " As-you-type completion
+let g:ycm_warning_symbol = '--'
 let g:ycm_filetype_blacklist = { '*': 1 }
 let g:ycm_filetype_whitelist = { 'javascript': 1,
                                \ 'typescript': 1,
