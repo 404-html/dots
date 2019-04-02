@@ -94,7 +94,7 @@ set undolevels=1000
 set omnifunc=syntaxcomplete#Complete
 
 " Indent for web
-au FileType html,css,scss,sass,less,djangohtml,js
+au FileType html,css,scss,sass,less,djangohtml,javascript
             \ set tabstop=2 |
             \ set shiftwidth=2
 

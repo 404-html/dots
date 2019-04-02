@@ -24,7 +24,7 @@ plugins=(
   sudo
   git
   docker
-  docker-comose
+  docker-compose
   npm
   ng
   tmux
