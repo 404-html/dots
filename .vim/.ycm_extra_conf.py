@@ -2,6 +2,7 @@ import os
 import ycm_core
 
 flags = [
+  '-std=gnu11',
   '-Wall',
   '-Wextra',
   '-Wno-long-long',
@@ -9,7 +10,6 @@ flags = [
   '-fexceptions',
   '-ferror-limit=10000',
   '-DNDEBUG',
-  '-std=c11',
   '-xc',
   '-isystem/usr/include/',
   ]
